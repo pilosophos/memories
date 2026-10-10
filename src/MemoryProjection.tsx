@@ -9,19 +9,19 @@ export function MemoryProjection() {
     {memory: "My brother's sixth birthday party", bgColor: 'green'},
   ] as Memory[]);
 
-  const [ memoryIndex, setMemoryIndex ] = useState(2);
+  const [ memoryIndex, setMemoryIndex ] = useState(0);
   const currentMemory = memories[memoryIndex % memories.length];
 
   useEffect(() => {
     setTimeout(() => {
       setMemoryIndex(memoryIndex + 1);
-    }, 5000);
+    }, 8000);
   }, [memoryIndex])
 
   return (
     <main className="w-full h-full p-20">
       <div
-        className="bg-orange-100/45 rounded-xl flex items-center h-full aspect-4/3 mx-auto p-20"
+        className="rounded-xl flex items-center h-full aspect-4/3 mx-auto p-20"
         style={ {background: currentMemory.bgColor} }
       >
         <span className="text-8xl text-white font-bold uppercase text-center">{currentMemory.memory}</span>
