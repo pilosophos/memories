@@ -11,11 +11,11 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
     "preact": "^10.29.8",
+    "socket.io-client": "^4.8.4",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.10.6",
-    "@types/node": "^24.13.3",
     "typescript": "~6.0.2",
     "vite": "^8.3.0"
   }

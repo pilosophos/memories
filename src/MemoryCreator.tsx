@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
+import type { Memory } from './types';
 
 const MEMORY_COLORS = [
   'black',
@@ -21,7 +22,7 @@ export function MemoryCreator() {
 
  const memoryText = useRef<HTMLDivElement>(null);
 
-  const onMemoryChange = (e) => {
+  function onMemoryChange (e) {
     let newMemory = e.target.textContent;
     if (newMemory === '') {
       newMemory = 'Write something here';
@@ -29,6 +30,22 @@ export function MemoryCreator() {
     memoryText.current!.textContent = newMemory;
     setMemory(newMemory);
   };
+
+  function onSubmitMemory() {
+    const fullMemory = {
+      memory,
+      bgColor,
+      creator: 'John Doe'
+    } as Memory;
+
+    fetch('http://localhost:3000/submit', {
+      method: 'POST',
+      headers: {
+        "Content-Type": `application/x-www-form-urlencoded`,
+      },
+      body: new URLSearchParams(fullMemory).toString(),
+    });
+  }
 
   useEffect(() => {
     if (memory) {
@@ -64,6 +81,8 @@ export function MemoryCreator() {
           )}
         </div>
       </div>
+
+      <button onClick={ onSubmitMemory }>Submit</button>
     </div>
   )
 }
