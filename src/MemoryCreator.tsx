@@ -18,11 +18,17 @@ const MEMORY_COLORS = [
   'teal',
 ];
 
+const SLIDE_TEMPLATES = [
+  slide1,
+  slide2,
+]
+
 export function MemoryCreator() {
   const memoryPlaceholder = '[Click here to remember]';
   const [ memory, setMemory ] = useState(memoryPlaceholder);
   const [ bgColor, setBgColor ] = useState('black');
   const [ creator, setCreator ] = useState('');
+  const [ slideTemplateIndex, setSlideTemplateIndex ] = useState(0);
 
   const canSubmit = (memory !== memoryPlaceholder) && (creator !== '');
 
@@ -30,6 +36,7 @@ export function MemoryCreator() {
     setMemory(memoryPlaceholder);
     setBgColor('black');
     setCreator('');
+    setSlideTemplateIndex((slideTemplateIndex + 1) % SLIDE_TEMPLATES.length);
   }
 
   const memoryText = useRef<HTMLDivElement>(null);
@@ -68,6 +75,8 @@ export function MemoryCreator() {
       },
       body: new URLSearchParams(fullMemory).toString(),
     });
+
+    reset();
   }
 
   useEffect(() => {
@@ -90,7 +99,7 @@ export function MemoryCreator() {
             onClick={ onClickSlide }
             className="flex items-center justify-center h-91 aspect-square -rotate-1"
           >
-            <img src={slide1} alt="Slide template" className="absolute z-20 w-90 pointer-events-none" />
+            <img src={ SLIDE_TEMPLATES[slideTemplateIndex] } alt="Slide template" className="absolute z-20 w-90 pointer-events-none" />
             <div className="transition-colors duration-200 w-85 aspect-4/3 flex items-center justify-center p-20" style={ {backgroundColor: bgColor} }>
               <div
                 className="text-center font-bold uppercase text-2xl h-fit w-49 z-10 opacity-80 overflow-hidden"
