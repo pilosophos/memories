@@ -57,7 +57,12 @@ export function MemoryCreator() {
   }, [memory]);
 
   return (
-    <div className="text-white text-lg flex flex-col items-center p-5 gap-10">
+    <div className="text-white text-lg h-full flex flex-col justify-center items-center p-5 gap-10">
+      <header className="text-center">
+        <h1 className="font-extrabold text-3xl uppercase">Welcome to KPIFF!</h1>
+        <p>Now screening: Your memories.</p>
+      </header>
+
       <div className="flex flex-col md:flex-row gap-10">
         <section>
           <header className="text-center italic mb-5">A precious of memory of mine is...</header>
@@ -97,7 +102,7 @@ export function MemoryCreator() {
           type="text"
           name="name"
           id="name"
-          className="ms-3 px-3 p-1 text-black bg-white rounded-md inset-shadow-sm inset-shadow-black/50" />
+          className="w-100 ms-3 px-3 p-1 text-black bg-white rounded-md inset-shadow-sm inset-shadow-black/50" />
       </div>
 
       <div>
