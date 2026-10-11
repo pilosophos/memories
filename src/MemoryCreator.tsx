@@ -19,16 +19,25 @@ const MEMORY_COLORS = [
 ];
 
 export function MemoryCreator() {
-  const [ memory, setMemory ] = useState('[Click here to remember]');
+  const memoryPlaceholder = '[Click here to remember]';
+  const [ memory, setMemory ] = useState(memoryPlaceholder);
   const [ bgColor, setBgColor ] = useState('black');
   const [ creator, setCreator ] = useState('');
 
- const memoryText = useRef<HTMLDivElement>(null);
+  const canSubmit = (memory !== memoryPlaceholder) && (creator !== '');
+
+  function reset() {
+    setMemory(memoryPlaceholder);
+    setBgColor('black');
+    setCreator('');
+  }
+
+  const memoryText = useRef<HTMLDivElement>(null);
 
   function onMemoryChange (e) {
     let newMemory = e.target.textContent;
     if (newMemory === '') {
-      newMemory = 'A memory you cherish';
+      newMemory = memoryPlaceholder;
     }
     memoryText.current!.textContent = newMemory;
     setMemory(newMemory);
@@ -106,8 +115,12 @@ export function MemoryCreator() {
       </div>
 
       <div>
-        <button onClick={ onSubmitMemory } className="px-8 py-3 flex bg-blue-800 hover:bg-blue-700 active:bg-blue-500 h-12 -rotate-1 hover:-rotate-2">
-          <img src={submit} alt="" className=""/>
+        <button
+          disabled={ !canSubmit }
+          onClick={ onSubmitMemory }
+          className="px-8 py-3 flex bg-blue-800 disabled:bg-gray-800 hover:bg-blue-700 active:bg-blue-500 h-12 -rotate-1 hover:-rotate-2"
+        >
+          <img src={submit} alt="submit"/>
         </button>
       </div>
     </div>
