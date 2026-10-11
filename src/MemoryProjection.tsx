@@ -4,9 +4,7 @@ import { SERVER_URL, socket } from './server-connection';
 
 export function MemoryProjection() {
   const [ memories, setMemories ] = useState([
-    {memory: 'Me and dad on a sailboat', bgColor: 'blue'},
-    {memory: 'My visit to the Met in New York', bgColor: 'red'},
-    {memory: "My brother's sixth birthday party", bgColor: 'green'},
+    {memory: 'Loading memories', bgColor: 'blue'},
   ] as Memory[]);
 
   const [ memoryChangeTimeout, setMemoryChangeTimeout ] = useState(null as number | null);
