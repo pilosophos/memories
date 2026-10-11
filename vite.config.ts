@@ -9,4 +9,12 @@ export default defineConfig({
     preact(),
     tailwindcss(),
   ],
+  build: {
+    rolldownOptions: {
+      input: {
+        main: 'index.html',
+        projector: 'projector.html'
+      }
+    }
+  }
 })
