@@ -3,6 +3,7 @@ import type { Memory } from './types';
 import { SERVER_URL } from './server-connection';
 import slide1 from './assets/slide-1.png';
 import slide2 from './assets/slide-2.png';
+import slide3 from './assets/slide-3.png';
 import submit from './assets/submit.png';
 
 const MEMORY_COLORS = [
@@ -21,6 +22,7 @@ const MEMORY_COLORS = [
 const SLIDE_TEMPLATES = [
   slide1,
   slide2,
+  slide3
 ]
 
 export function MemoryCreator() {
@@ -28,7 +30,7 @@ export function MemoryCreator() {
   const [ memory, setMemory ] = useState(memoryPlaceholder);
   const [ bgColor, setBgColor ] = useState('black');
   const [ creator, setCreator ] = useState('');
-  const [ slideTemplateIndex, setSlideTemplateIndex ] = useState(Math.floor(Math.random() * MEMORY_COLORS.length));
+  const [ slideTemplateIndex, setSlideTemplateIndex ] = useState(Math.floor(Math.random() * SLIDE_TEMPLATES.length));
 
   const canSubmit = (memory !== memoryPlaceholder) && (creator !== '');
 
