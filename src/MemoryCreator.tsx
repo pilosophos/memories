@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import type { Memory } from './types';
+import { SERVER_URL } from './server-connection';
 
 const MEMORY_COLORS = [
   'black',
@@ -38,7 +39,7 @@ export function MemoryCreator() {
       creator: 'John Doe'
     } as Memory;
 
-    fetch('http://localhost:3000/submit', {
+    fetch(`${SERVER_URL}/submit`, {
       method: 'POST',
       headers: {
         "Content-Type": `application/x-www-form-urlencoded`,

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "preact/hooks"
 import type { Memory } from "./types";
-import { socket } from './socket';
+import { SERVER_URL, socket } from './server-connection';
 
 export function MemoryProjection() {
   const [ memories, setMemories ] = useState([
@@ -24,7 +24,7 @@ export function MemoryProjection() {
   }, [memoryIndex])
 
   useEffect(() => {
-    fetch('http://localhost:3000/memories')
+    fetch(`${SERVER_URL}/memories`)
       .then(res => res.json())
       .then(fetchedMemories => setMemories(fetchedMemories))
   }, []);
@@ -60,7 +60,7 @@ export function MemoryProjection() {
     <div className="bg-black h-full w-full">
       <main className="w-full h-full p-20">
         <div
-          className="rounded-xl flex items-center h-full aspect-4/3 mx-auto p-20"
+          className="rounded-xl flex items-center justify-center h-full aspect-4/3 mx-auto p-20"
           style={ {background: currentMemory.bgColor} }
         >
           <span className="text-8xl text-white font-bold uppercase text-center">{currentMemory.memory}</span>
