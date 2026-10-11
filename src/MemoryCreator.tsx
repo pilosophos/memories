@@ -7,11 +7,11 @@ import submit from './assets/submit.png';
 
 const MEMORY_COLORS = [
   'black',
-  'red',
-  'yellow',
+  'darkred',
+  'gold',
   'green',
-  'blue',
-  'brown',
+  'navy',
+  'saddlebrown',
   'purple',
   'pink',
   'orange',
@@ -28,7 +28,7 @@ export function MemoryCreator() {
   const [ memory, setMemory ] = useState(memoryPlaceholder);
   const [ bgColor, setBgColor ] = useState('black');
   const [ creator, setCreator ] = useState('');
-  const [ slideTemplateIndex, setSlideTemplateIndex ] = useState(0);
+  const [ slideTemplateIndex, setSlideTemplateIndex ] = useState(Math.floor(Math.random() * MEMORY_COLORS.length));
 
   const canSubmit = (memory !== memoryPlaceholder) && (creator !== '');
 
@@ -103,6 +103,9 @@ export function MemoryCreator() {
             <div className="transition-colors duration-200 w-85 aspect-4/3 flex items-center justify-center p-20" style={ {backgroundColor: bgColor} }>
               <div
                 className="text-center font-bold uppercase text-2xl h-fit w-49 z-10 opacity-80 overflow-hidden"
+                style={
+                  {color: ['gold', 'pink', 'orange'].includes(bgColor) ? 'black' : 'white'}
+                }
                 ref={memoryText}
                 contentEditable={true}
                 onBlur={onMemoryChange}
