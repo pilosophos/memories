@@ -43,8 +43,8 @@ export function MemoryCreator() {
 
   const memoryText = useRef<HTMLDivElement>(null);
 
-  function onMemoryChange (e) {
-    let newMemory = e.target.textContent;
+  function onMemoryChange (e: FocusEvent) {
+    let newMemory = (e.target as HTMLDivElement).textContent;
     if (newMemory === '') {
       newMemory = memoryPlaceholder;
     }
@@ -75,7 +75,7 @@ export function MemoryCreator() {
       headers: {
         "Content-Type": `application/x-www-form-urlencoded`,
       },
-      body: new URLSearchParams(fullMemory).toString(),
+      body: new URLSearchParams(fullMemory as unknown as Record<string, string>).toString(),
     });
 
     reset();
