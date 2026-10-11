@@ -43,6 +43,17 @@ export function MemoryCreator() {
     setMemory(newMemory);
   };
 
+  function onClickSlide () {
+    if (memoryText.current) {
+      memoryText.current.focus();
+      const selection = window.getSelection();
+      const range = document.createRange();
+      range.selectNodeContents(memoryText.current);
+      selection!.removeAllRanges();
+      selection!.addRange(range);
+    }
+  }
+
   function onSubmitMemory() {
     const fullMemory = {
       memory,
@@ -75,7 +86,10 @@ export function MemoryCreator() {
       <div className="flex flex-col md:flex-row gap-10">
         <section>
           <header className="text-center italic mb-5">A precious of memory of mine is...</header>
-          <figure className="flex items-center justify-center h-91 aspect-square">
+          <figure
+            onClick={ onClickSlide }
+            className="flex items-center justify-center h-91 aspect-square -rotate-1"
+          >
             <img src={slide1} alt="Slide template" className="absolute z-20 w-90 pointer-events-none" />
             <div className="transition-colors duration-200 w-85 aspect-4/3 flex items-center justify-center p-20" style={ {backgroundColor: bgColor} }>
               <div
