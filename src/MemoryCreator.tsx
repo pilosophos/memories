@@ -57,7 +57,7 @@ export function MemoryCreator() {
   }, [memory]);
 
   return (
-    <div className="text-white text-lg h-full flex flex-col justify-center items-center p-5 gap-10">
+    <div className="text-white text-lg md:h-full flex flex-col justify-center items-center p-5 gap-5 md:gap-10">
       <header className="text-center">
         <h1 className="font-extrabold text-3xl uppercase">Welcome to KPIFF!</h1>
         <p>Now screening: Your memories.</p>
@@ -80,7 +80,7 @@ export function MemoryCreator() {
         </section>
         <section>
           <header className="text-center italic mb-5">and I think it was more...</header>
-          <div className="flex items-center justify-center h-91">
+          <div className="flex items-center justify-center md:h-91">
             <div className="grid grid-cols-5 md:grid-cols-2 gap-2">
               { MEMORY_COLORS.map( color =>
                 <div
@@ -94,15 +94,15 @@ export function MemoryCreator() {
         </section>
       </div>
 
-      <div>
-        <label htmlFor="name" className="italic">My name is</label>
+      <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-3">
+        <label htmlFor="name" className="italic text-center">My name is</label>
         <input
           value={ creator }
           onChange={ e => setCreator((e.target as HTMLInputElement).value) }
           type="text"
           name="name"
           id="name"
-          className="w-100 ms-3 px-3 p-1 text-black bg-white rounded-md inset-shadow-sm inset-shadow-black/50" />
+          className="md:w-100 px-3 p-1 text-black bg-white rounded-md inset-shadow-sm inset-shadow-black/50" />
       </div>
 
       <div>
