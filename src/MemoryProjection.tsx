@@ -16,7 +16,7 @@ export function MemoryProjection() {
       const timeout = setTimeout(() => {
         setMemoryIndex(prev => prev + 1);
         setMemoryChangeTimeout(null);
-      }, 2000);
+      }, 5000);
       setMemoryChangeTimeout(timeout);
     }
   }, [memoryIndex])
