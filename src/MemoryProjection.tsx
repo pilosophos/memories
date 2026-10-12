@@ -60,7 +60,14 @@ export function MemoryProjection() {
         className="rounded-xl flex items-center justify-center h-full aspect-4/3 mx-auto p-20"
         style={ {background: currentMemory.bgColor} }
       >
-        <span className="text-8xl text-white font-bold uppercase text-center">{currentMemory.memory}</span>
+        <span
+          className="text-8xl text-white font-bold uppercase text-center"
+          style={{
+            color: ['gold', 'pink', 'orange'].includes(currentMemory.bgColor) ? 'black' : 'white'
+          }}
+        >
+          {currentMemory.memory}
+        </span>
       </div>
     </main>
   )
