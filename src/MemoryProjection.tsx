@@ -14,9 +14,9 @@ export function MemoryProjection() {
   useEffect(() => {
     if (memoryChangeTimeout === null) {
       const timeout = setTimeout(() => {
-        setMemoryIndex(memoryIndex + 1);
+        setMemoryIndex(prev => prev + 1);
         setMemoryChangeTimeout(null);
-      }, 5000);
+      }, 2000);
       setMemoryChangeTimeout(timeout);
     }
   }, [memoryIndex])
